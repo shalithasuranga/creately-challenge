@@ -19,7 +19,7 @@
  Begin
  Check each pixel of input image
   If mask applies (if at least one pixel hits excluding the middle pixel) put 1 in the resultant array for all applied pixels
-  Repeat until all image is scanned
+  Repeat until entire image is scanned
  Render the resultant array as stroke on both canvases
  End
  ```
