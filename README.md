@@ -1,4 +1,4 @@
-#Find Outline Challenge
+# Find Outline Challenge
 
 ## How the solution works
 
