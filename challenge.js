@@ -111,23 +111,21 @@
                 if(B[i][j] == 1) {
                     ctx.beginPath();
                     try {
-                        ctx.rect(i - 1, j - 1, stroke, stroke);  
+                        ctx.fillStyle="#e6ad1f";
+                        ctx.fillRect(i - 1, j, stroke, stroke); 
                     }
                     catch(e){
 
                     }
                     ctx.fillStyle="#e6ad1f";
-                    ctx.fill();
-
                     ctx2.beginPath();
                     try {
-                        ctx2.rect(i - 1, j - 1, stroke, stroke);
+                        ctx2.fillStyle="#e6ad1f";
+                        ctx2.fillRect(i - 1, j, stroke, stroke);
                     }
                     catch(e){
 
                     }
-                    ctx2.fillStyle="#e6ad1f";
-                    ctx2.fill();
                 }
             }
         }
