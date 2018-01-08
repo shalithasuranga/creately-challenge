@@ -1,6 +1,6 @@
     /*
     Written by Shalitha
-    Very Simple Pixel level Edge Detector  
+    Simple Pixel level Edge Detector  
     */
     
     let A = []; // 2D array for original image area
@@ -8,7 +8,7 @@
     let imgData; // complete image data object
     let canvas, outline;
     let ctx, ctx2;
-    let stroke = 2;
+    let stroke = 1;
 
     window.onload = () => {
         setupCanvas();
@@ -92,7 +92,7 @@
                                         if(A[i + vx[k]][j + vy[k]] == 0) 
                                             B[i + vx[k]][j + vy[k]] = 1;
                                     }
-                                    //B[i][j] = 1;
+                                    B[i][j] = 1;
                                 }
                             }
                         }
