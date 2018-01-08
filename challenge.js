@@ -1,3 +1,8 @@
+    /*
+    Written by Shalitha
+    Very Simple Pixel level Edge Detector  
+    */
+    
     let A = []; // 2D array for original image area
     let B = []; // 2D array for the outline data
     let imgData; // complete image data object
@@ -53,6 +58,8 @@
             A.push(a.slice());
             B.push(a.slice());
         }
+
+        /* Save image data to 2D array A */
         let xi = 0;
         let yi = 0;
         for(let i = 3 ; i < imgData.length; i+=4){
@@ -65,20 +72,25 @@
                 A[xi][yi] = imgData[i] > 0 ? 1 : 0;
             }
         }
+
+        /* Save the outline to 2D array B */
         for(let i = 0;  i < A.length; i++ ){
             for(let j = 0; j < A[i].length; j++){
                 if(A[i][j] == 1) {
-                    try{
+                    try {
+                        /* Edge Detector Filter - Diagonal included */
                         let vx = [-1, 0, 1, 1, 1, 0, -1, -1];
                         let vy = [1, 1, 1, 0, -1, -1, -1, 0];
+                        /* Edge Detector Filter - Diagonal excluded */
                         //let vx = [ 0, 1, 0, -1];
                         //let vy = [1, 0, -1, 0];
                         for(let k = 0 ; k < vx.length; k++){
                             if(i + vx[k] >= 0 && i + vx[k] <= canvas.width && j + vy[k] >= 0 && j + vy[k] <= canvas.height) {
                                 if(A[i + vx[k]][j + vy[k]] == 0){
+                                    /* Put 1 for all outer pixels */
                                     for(let k = 0 ; k < vx.length; k++){
                                         if(A[i + vx[k]][j + vy[k]] == 0) 
-                                        B[i + vx[k]][j + vy[k]] = 1;
+                                            B[i + vx[k]][j + vy[k]] = 1;
                                     }
                                     //B[i][j] = 1;
                                 }
@@ -86,20 +98,20 @@
                         }
 
                     }
-                    catch(e){
+                    catch(e) {
 
                     }
                 }
             }
         }
 
+        /* Reder the saved outline to both canvases */
         for(let i = 0;  i < B.length; i++ ){
             for(let j = 0; j < B[i].length; j++){
                 if(B[i][j] == 1) {
                     ctx.beginPath();
                     try {
-                        ctx.rect(i - 1, j - 1, stroke, stroke);
-                        
+                        ctx.rect(i - 1, j - 1, stroke, stroke);  
                     }
                     catch(e){
 
